@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import ColorfulMessage from "./components/ColorfulMessage";
 
 const App = () => {
+  // stateが更新されると再レンダリング
+  console.log("さいしょ");
+
   //[stateの変数名, stateを更新していく関数名] = useState(変数の初期値)
   const [num, setNum] = useState(0);
   const [faceShowFlag, setFaceShowFlag] = useState(false);
@@ -13,6 +16,14 @@ const App = () => {
   const onClickSwitchShowFlag = () => {
     setFaceShowFlag(!faceShowFlag);
   };
+
+  if (num > 0) {
+    if (num % 3 === 0) {
+      faceShowFlag || setFaceShowFlag(true);
+    } else {
+      faceShowFlag && setFaceShowFlag(false);
+    }
+  }
 
   return (
     <>
